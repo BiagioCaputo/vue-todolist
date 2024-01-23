@@ -6,6 +6,7 @@ const app = createApp({
     name:"Vue tasks list",
     data: () => ({
         tasks,
+        newTaskText:"",
     }),
 
     computed: {
@@ -15,6 +16,16 @@ const app = createApp({
     methods: {
       removeTask(id){
         this.tasks = this.tasks.filter(task => id !== task.id);
+      },
+      addTask(){
+        const newTask = {
+            id: new Date().toISOString(),
+            done:false,
+            text:this.newTaskText
+        }
+        this.tasks.push(newTask);
+
+        this.newTaskText = "";
       }
     }
 

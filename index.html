@@ -18,6 +18,9 @@
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 <body>
@@ -28,11 +31,19 @@
                 <h1>Cose da fare</h1>
             </div>
             <ul class="list-group mt-5">
+
                 <li class="list-group-item d-flex justify-content-between"  v-for="task in tasks">
                     <span v-if="task.done" class="text-decoration-line-through">{{task.text}}</span>
                     <span v-else>{{task.text}}</span>
                     <button type="button" class="btn-close" @click="removeTask(task.id)"></button>
 
+                </li>
+
+                <li class="list-group-item">          
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Aggiungi una task" v-model.trim="newTaskText">
+                        <button class="btn btn-outline-success" type="button" @click ="addTask()"><i class="fa-solid fa-plus"></i></button>
+                    </div>
                 </li>
             </ul>
         </div>
