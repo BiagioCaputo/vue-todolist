@@ -14,9 +14,13 @@ const app = createApp({
     },
 
     methods: {
+
+    //funzione per rimuovere una task 
       removeTask(id){
         this.tasks = this.tasks.filter(task => id !== task.id);
       },
+
+    //funzione per aggiungere una task inserita dall'utente
       addTask(){
         const newTask = {
             id: new Date().toISOString(),
