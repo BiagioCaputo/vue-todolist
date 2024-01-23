@@ -28,9 +28,10 @@
                 <h1>Cose da fare</h1>
             </div>
             <ul class="list-group mt-5">
-                <li class="list-group-item"  v-for="task in tasks">
+                <li class="list-group-item d-flex justify-content-between"  v-for="task in tasks">
                     <span v-if="task.done" class="text-decoration-line-through">{{task.text}}</span>
                     <span v-else>{{task.text}}</span>
+                    <button type="button" class="btn-close" @click="removeTask(task.id)"></button>
 
                 </li>
             </ul>
