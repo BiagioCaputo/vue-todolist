@@ -7,10 +7,16 @@ const app = createApp({
     data: () => ({
         tasks,
         newTaskText:"",
+        searchedText:""
     }),
-
+     
     computed: {
-      
+        //funzione per ricavare un nuovo array contenente i termini ricercati dall'utente salvati nella stringa contenuta in searched text
+        searchedTasks() {
+            const searchedTask = this.searchedText.toLowerCase();
+
+            return this.tasks.filter(task => task.text.toLowerCase().includes(searchedTask));
+        }
     },
 
     methods: {
