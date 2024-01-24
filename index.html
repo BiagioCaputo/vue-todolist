@@ -43,7 +43,7 @@
 
                 </li>
                 <!-- Input text e button per far inserire e aggiungere all'utente una nuova task-->
-                <li class="list-group-item">          
+                <li class="list-group-item p-4">          
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Aggiungi una task" v-model.trim="newTaskText" @keyup.enter = "addTask()">
                         <button class="btn btn-outline-success" type="button" @click = "addTask()"><i class="fa-solid fa-plus"></i></button>
@@ -52,6 +52,17 @@
             </ul>
             <!-- Nel caso la lista fosse vuota -->
             <h2 class="text-center" v-show = "!tasks.length">Non ci sono task</h2>
+
+            <!-- Bottoni per azioni massive che scompare quando la lista è vuota-->
+            <div class="d-flex mt-5" v-if = "tasks.length">
+                <button type="button" class="btn btn-outline-success col-4" @click ="setAllAs(true)">Tutti fatti</button>
+                <button type="button" class="btn btn-outline-warning col-4" @click ="setAllAs(false)">Tutti da fare</button>
+                <button type="button" class="btn btn-outline-danger col-4" @click ="clearAll()">Elimina tutti</button>
+            </div>
+
+            
+
+
         </div>
 
     </div>
